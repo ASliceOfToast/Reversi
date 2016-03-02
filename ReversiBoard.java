@@ -75,8 +75,9 @@ public class ReversiBoard implements Board{
 						//Starting with special cases
 						//Holy fuck this shit is long
 						//I'm just gonna put a shit load of comments here so I can find it more easily..................................................................................................................best solution.
+						//Thank God for folding.
 
-						if(x==0&&y==0){//Top left
+						if(x==0&&y==0){//Top left Corner
 
 							if(that[1][0].equals(theyAre)){//It's going down
 								for(int i = 2; i<that.length;i++){//Don't go too far down
@@ -116,7 +117,7 @@ public class ReversiBoard implements Board{
 
 						}//if Top left
 
-						if(x==0&&y==7){//Top right
+						if(x==0&&y==7){//Top right corner
 
 							if(that[1][7].equals(theyAre)){//It's going down
 								for(int i = 2; i<that.length;i++){//Don't go too far down
@@ -155,7 +156,7 @@ public class ReversiBoard implements Board{
 
 						}//if Top right
 
-						if(x==7&&y==0){//Bottom left
+						if(x==7&&y==0){//Bottom left corner
 
 							if(that[6][0].equals(theyAre)){//I'm coming up
 								for(int i = that[0].length - 2; i>0;i--){//But not too far up
@@ -195,7 +196,7 @@ public class ReversiBoard implements Board{
 
 						}//bottom left
 
-						if(x==7&&y==0){//Bottom right
+						if(x==7&&y==0){//Bottom right corner
 
 							if(that[6][7].equals(theyAre)){//I'm coming up
 								for(int i = that[0].length - 2; i>0;i--){//But not too far up
@@ -562,6 +563,142 @@ public class ReversiBoard implements Board{
 							}//moving right and down
 
 						}//Right edge
+
+						if(x!=0&&x!=7&&y!=0&&y!=7){//General condition
+
+							//And so begins the last portion of this gargantuan method.............................................................................................................................
+
+							if(x>1){//Moving up
+								if(that[x-1][y].equals(theyAre)){//check for them
+									int step = 2;
+									while(x-step>=0){
+										if(that[x-step][y].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x-step;
+											possibleCoordinates[1]=y;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving up
+
+							if(x<6){//Moving down
+								if(that[x+1][y].equals(theyAre)){//check for them
+									int step = 2;
+									while(x+step<=7){
+										if(that[x+step][y].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x+step;
+											possibleCoordinates[1]=y;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving down
+
+							if(y>1){//moving left
+								if(that[x][y-1].equals(theyAre)){//right check
+									int step = 2;
+									while(y-step>=0){
+										if(that[x][y-step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x;
+											possibleCoordinates[1]=y-step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//right check
+							}//moving left
+
+							if(y<6){//moving right
+								if(that[x][y+1].equals(theyAre)){//right check
+									int step = 2;
+									while(y+step<=7){
+										if(that[x][y+step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x;
+											possibleCoordinates[1]=y+step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//right check
+							}//moving right
+
+							if(x<6&&y>1){//moving down and left
+								if(that[x+1][y-1].equals(theyAre)){//check for them
+									int step = 2;
+									while(x+step<=7&&y-step>=0){
+										if(that[x+step][y-step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x+step;
+											possibleCoordinates[1]=y-step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving right and down
+
+							if(x>1&&y>1){//moving up and left
+								if(that[x-1][y-1].equals(theyAre)){//check for them
+									int step = 2;
+									while(x-step>=0&&y-step>=0){
+										if(that[x-step][y-step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x-step;
+											possibleCoordinates[1]=y-step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving right and up
+
+							if(x>1&&y<6){//moving up and right
+								if(that[x-1][y+1].equals(theyAre)){//check for them
+									int step = 2;
+									while(x-step>=0&&y+step<=7){
+										if(that[x-step][y+step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x-step;
+											possibleCoordinates[1]=y+step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving right and up
+
+							if(x<6&&y<6){//moving down and right
+								if(that[x+1][y+1].equals(theyAre)){//check for them
+									int step = 2;
+									while(x+step<=7&&y+step<=7){
+										if(that[x+step][y+step].equals(".")){//found a dot
+											int[] possibleCoordinates = new int[2];
+											possibleCoordinates[0]=x+step;
+											possibleCoordinates[1]=y+step;
+											canGoHere.add(possibleCoordinates);
+											break;
+										}//found a dot
+										step++;
+									}//while loop
+								}//check for them
+							}//moving right and down
+
+						}//General condition
+
+
 
         }//Iterating through all the locations of player
 				return canGoHere;
