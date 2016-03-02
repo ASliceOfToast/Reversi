@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Player{
 
 private String player;
@@ -10,7 +12,7 @@ public void setPlayer(String player){
    player = this.player;
 }
 
-public abstract void setMove(int[][] possiblemoves);
+public abstract void setMove(ArrayList<int[]> possiblemoves);
 
 public int[] getMove(){
    return position;

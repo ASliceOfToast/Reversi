@@ -2,10 +2,15 @@ import java.util.*;
 
 public class HumanPlayer extends Player{
 Scanner input = new Scanner(System.in);
-public int[][] possiblecoordinates;
+public ArrayList<int[]> possiblecoordinates;
+public int[] holder = new int[2];
 boolean ispossible;
 
-public void setMove(int[][] possiblecoordinates){//will get possiblecoordinates from the whereCanIGo method in ReversiBoard
+public HumanPlayer(String player){
+   setPlayer(player);
+}
+
+public void setMove(ArrayList<int[]> possiblecoordinates){//will get possiblecoordinates from the whereCanIGo method in ReversiBoard
    possiblecoordinates = this.possiblecoordinates;
    System.out.println("Enter your move, " + getPlayer() + " player: ");
    String fightme;
@@ -16,11 +21,13 @@ public void setMove(int[][] possiblecoordinates){//will get possiblecoordinates 
       position [1] = Character.getNumericValue(fightme.charAt(1));   
    }
    catch(NumberFormatException curveball){
-      //meh
+      System.out.println("Input format is: [rows] [cols]. [rows] and [cols] must be integers.");
+      setMove(possiblecoordinates);
    }
    
-   for(int i = 0; i < possiblecoordinates.length;i++){
-         if(possiblecoordinates[i][0] == position[0] && possiblecoordinates[i][1] == position[1]){
+   for(int i = 0; i < possiblecoordinates.size();i++){
+         holder = possiblecoordinates.get(i);
+         if(holder[0] == position[0] && holder[1] == position[1]){
             ispossible = true;
          }
    }//for loop checks to see if the coordinates the user entered are valid moves/coordinates
