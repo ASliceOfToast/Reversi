@@ -45,9 +45,11 @@ int count = 1;
    /*while(!wincondition){
          itsaboard.printBoard(); 
          if((count%2 == 0){
+            itsaboard.whereAmI(player2.getPlayer());
             player2.setMove(itsaboard.whereICanGo(player2.getPlayer()));
          }
          else{
+            itsaboard.whereAmI(player1.getPlayer());
             player1.setMove(itsaboard.whereICanGo(player1.getPlayer()));
          }
          count++;
