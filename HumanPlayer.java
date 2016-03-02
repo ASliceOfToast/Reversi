@@ -17,8 +17,8 @@ public void setMove(ArrayList<int[]> possiblecoordinates){//will get possiblecoo
    fightme = input.nextLine().replaceAll(" ",""); //kill all white space
      //not accounting for syntax errors in player input yet =__=
    try{
-      position[1] = Character.getNumericValue(fightme.charAt(0)) - 1;
-      position [0] = Character.getNumericValue(fightme.charAt(1)) - 1;   
+      position[0] = Character.getNumericValue(fightme.charAt(0)) - 1;
+      position [1] = Character.getNumericValue(fightme.charAt(1)) - 1;   
    }
    catch(NumberFormatException curveball){
       System.out.println("Input format is: [rows] [cols]. [rows] and [cols] must be integers.");
