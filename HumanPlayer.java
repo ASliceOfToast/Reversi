@@ -17,8 +17,8 @@ public void setMove(ArrayList<int[]> possiblecoordinates){//will get possiblecoo
    fightme = input.nextLine().replaceAll(" ",""); //kill all white space
      //not accounting for syntax errors in player input yet =__=
    try{
-      position[1] = Character.getNumericValue(fightme.charAt(0));
-      position [0] = Character.getNumericValue(fightme.charAt(1));   
+      position[1] = Character.getNumericValue(fightme.charAt(0)) - 1;
+      position [0] = Character.getNumericValue(fightme.charAt(1)) - 1;   
    }
    catch(NumberFormatException curveball){
       System.out.println("Input format is: [rows] [cols]. [rows] and [cols] must be integers.");
@@ -33,7 +33,7 @@ public void setMove(ArrayList<int[]> possiblecoordinates){//will get possiblecoo
    }//for loop checks to see if the coordinates the user entered are valid moves/coordinates
    
    
-   if(!ispossible){
+   if(!ispossible || position[0] < 0 || position[1] < 0 || position[0] > 7 || position[1] > 7){
       System.out.print("Invalid move.");
       setMove(possiblecoordinates);
    }//if the coordinates were invalid it runs the method again
