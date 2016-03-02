@@ -155,6 +155,46 @@ public class ReversiBoard implements Board{
 
 							if(that[6][0].equals(theyAre)){//I'm coming up
 								for(int i = that[0].length - 2; i>0;i--){//But not too far up
+									if(that[i][0].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=i;
+										possibleCoordinates[1]=0;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//Found a dot
+								}//but not too far up
+							}//...so you better get the party started
+
+							if(that[7][1].equals(theyAre)){//Going right
+								for(int i = 2; i<that[0].length;i++){//Don't go too far
+									if(that[7][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=7;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//Found a dot
+								}//But not too far
+							}//To the right
+
+							if(that[6][1].equals(theyAre)){//going diagonally up and right
+								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
+									if(that[i][that[0].length-i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=that[0].length-i;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//found a dot
+								}//Don't go too far
+							}//up and right
+
+						}//bottom left
+
+						if(x==7&&y==0){//Bottom right
+
+							if(that[6][7].equals(theyAre)){//I'm coming up
+								for(int i = that[0].length - 2; i>0;i--){//But not too far up
 									if(that[i][7].equals(".")){//found a dot
 										int[] possibleCoordinates = new int[2];
 										possibleCoordinates[0]=i;
@@ -165,31 +205,37 @@ public class ReversiBoard implements Board{
 								}//but not too far up
 							}//...so you better get the party started
 
-							if(that[0][6].equals(theyAre)){//Going left
+							if(that[7][6].equals(theyAre)){//To the left
 								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
-									if(that[0][i].equals(".")){//found a dot
+									if(that[7][i].equals(".")){//found a dot
 										int[] possibleCoordinates = new int[2];
-										possibleCoordinates[0]=0;
+										possibleCoordinates[0]=7;
 										possibleCoordinates[1]=i;
 										canGoHere.add(possibleCoordinates);
 										break;
 									}//Found a dot
 								}//But not too far
-							}//To the right
+							}//... Irreplaceable - Beyonce
 
-							if(that[1][6].equals(theyAre)){//going diagonally down and left
+							if(that[6][6].equals(theyAre)){//going diagonally up and left
 								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
-									if(that[that[0].length-i][i].equals(".")){//found a dot
+									if(that[i][i].equals(".")){//found a dot
 										int[] possibleCoordinates = new int[2];
-										possibleCoordinates[0]=that[0].length-i;
+										possibleCoordinates[0]=i;
 										possibleCoordinates[1]=i;
 										canGoHere.add(possibleCoordinates);
 										break;
 									}//found a dot
 								}//Don't go too far
-							}//towards the bottom left
+							}//up and left
 
-						}//if Top right
+						}//bottom right
+
+						if(x==0&&y!=0&&y!=7){//Top edge
+
+
+
+						}
 
         }//Iterating through all the locations of player
 				return canGoHere;
