@@ -59,7 +59,7 @@ public class ReversiBoard implements Board{
         String theyAre;
 				ArrayList<int[]> canGoHere = new ArrayList<int[]>();
         if(whoAmI.equals("X")){
-            theyAre = "Y";
+            theyAre = "O";
         }else{
             theyAre = "X";
         }
@@ -81,6 +81,7 @@ public class ReversiBoard implements Board{
 										possibleCoordinates[0]=i;
 										possibleCoordinates[1]=0;
 										canGoHere.add(possibleCoordinates);
+										break;
 									}//Found a dot
 								}//Don't go too far down
 							}//...I'm yelling timber
@@ -92,6 +93,7 @@ public class ReversiBoard implements Board{
 										possibleCoordinates[0]=0;
 										possibleCoordinates[1]=i;
 										canGoHere.add(possibleCoordinates);
+										break;
 									}//Found a dot
 								}//But not too far
 							}//To the right
@@ -103,6 +105,7 @@ public class ReversiBoard implements Board{
 										possibleCoordinates[0]=i;
 										possibleCoordinates[1]=i;
 										canGoHere.add(possibleCoordinates);
+										break;
 									}//found a dot
 								}//Don't go too far
 							}//towards the bottom right
@@ -118,35 +121,75 @@ public class ReversiBoard implements Board{
 										possibleCoordinates[0]=i;
 										possibleCoordinates[1]=7;
 										canGoHere.add(possibleCoordinates);
+										break;
 									}//Found a dot
 								}//Don't go too far down
 							}//...I'm yelling timber
 
 							if(that[0][6].equals(theyAre)){//Going left
-								for(int i = that[0].length - 2; i>0;i++){//Don't go too far
+								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
 									if(that[0][i].equals(".")){//found a dot
 										int[] possibleCoordinates = new int[2];
 										possibleCoordinates[0]=0;
 										possibleCoordinates[1]=i;
-										canGoHere.add(possibleCoordinates);
+										canGoHere.add(possibleCoordinates);break;
 									}//Found a dot
 								}//But not too far
 							}//To the right
 
 							if(that[1][6].equals(theyAre)){//going diagonally down and left
-								for(int i = that[0].length - 2; i>0;i++){//Don't go too far
+								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
 									if(that[that[0].length-i][i].equals(".")){//found a dot
 										int[] possibleCoordinates = new int[2];
 										possibleCoordinates[0]=that[0].length-i;
 										possibleCoordinates[1]=i;
 										canGoHere.add(possibleCoordinates);
+										break;
 									}//found a dot
 								}//Don't go too far
 							}//towards the bottom left
 
 						}//if Top right
 
+						if(x==7&&y==0){//Bottom left
 
+							if(that[6][0].equals(theyAre)){//I'm coming up
+								for(int i = that[0].length - 2; i>0;i--){//But not too far up
+									if(that[i][7].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=i;
+										possibleCoordinates[1]=7;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//Found a dot
+								}//but not too far up
+							}//...so you better get the party started
+
+							if(that[0][6].equals(theyAre)){//Going left
+								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
+									if(that[0][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=0;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//Found a dot
+								}//But not too far
+							}//To the right
+
+							if(that[1][6].equals(theyAre)){//going diagonally down and left
+								for(int i = that[0].length - 2; i>0;i--){//Don't go too far
+									if(that[that[0].length-i][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=that[0].length-i;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+										break;
+									}//found a dot
+								}//Don't go too far
+							}//towards the bottom left
+
+						}//if Top right
 
         }//Iterating through all the locations of player
 				return canGoHere;
