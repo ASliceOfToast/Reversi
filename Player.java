@@ -10,6 +10,10 @@ public void setPlayer(String player){
    player = this.player;
 }
 
-public abstract void setMove();
+public abstract void setMove(int[][] possiblemoves);
+
+public int[] getMove(){
+   return position;
+}
 
 }
