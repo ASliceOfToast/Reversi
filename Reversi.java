@@ -4,6 +4,11 @@ int count = 1;
 
   public static void main(String[] args){
    
+   if(args.length >= 3){
+      System.out.println("Format is: java Reversi Player 1 Player 2. Replace Player 1 and Player 2 with Human or RandomComputerPlayer.");
+      System.exit(0);
+   }
+   
    for(int i = 0;i<args.length;i++){
          switch(args[i].toLowerCase()){
             case "RandomComputerPlayer": 
@@ -45,6 +50,7 @@ int count = 1;
          else{
             player1.setMove(itsaboard.whereICanGo(player1.getPlayer()));
          }
+         count++;
    }
    
    some method that counts the amount of 'O's and 'X's on the board to determine winner
