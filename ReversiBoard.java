@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ReversiBoard implements Board{
     int[][] hereIAm;
     String[][] that=new String [8][8];
@@ -53,23 +55,101 @@ public class ReversiBoard implements Board{
 
     }//whereIAm
 
-    public void whereICanGo(String whoAmI){
-        String whoTheyAre;
+    public ArrayList<int[]> whereICanGo(String whoAmI){
+        String theyAre;
+				ArrayList<int[]> canGoHere = new ArrayList<int[]>();
         if(whoAmI.equals("X")){
-            whoTheyAre = "Y";
+            theyAre = "Y";
         }else{
-            whoTheyAre = "X";
+            theyAre = "X";
         }
 
-        for(int[] location: hereIAm){
+        for(int[] location : hereIAm){//Iterating through all the locations of the player
 
             int x = location[0];
             int y = location[1];
 
+						//Time to do the really fucking long check
+						//Starting with special cases
+
+						if(x==0&&y==0){//Top left
+
+							if(that[1][0].equals(theyAre)){//It's going down
+								for(int i = 2; i<that.length;i++){//Don't go too far down
+									if(that[i][0].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=i;
+										possibleCoordinates[1]=0;
+										canGoHere.add(possibleCoordinates);
+									}//Found a dot
+								}//Don't go too far down
+							}//...I'm yelling timber
+
+							if(that[0][1].equals(theyAre)){//Going right
+								for(int i = 2; i<that[0].length;i++){//Don't go too far
+									if(that[0][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=0;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+									}//Found a dot
+								}//But not too far
+							}//To the right
+
+							if(that[1][1].equals(theyAre)){//going diagonally down and right
+								for(int i = 2; i<that[0].length;i++){//Don't go too far
+									if(that[i][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=i;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+									}//found a dot
+								}//Don't go too far
+							}//towards the bottom right
+
+						}//if Top left
+
+						if(x==0&&y==7){//Top right
+
+							if(that[1][7].equals(theyAre)){//It's going down
+								for(int i = 2; i<that.length;i++){//Don't go too far down
+									if(that[i][7].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=i;
+										possibleCoordinates[1]=7;
+										canGoHere.add(possibleCoordinates);
+									}//Found a dot
+								}//Don't go too far down
+							}//...I'm yelling timber
+
+							if(that[0][6].equals(theyAre)){//Going left
+								for(int i = that[0].length - 2; i>0;i++){//Don't go too far
+									if(that[0][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=0;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+									}//Found a dot
+								}//But not too far
+							}//To the right
+
+							if(that[1][6].equals(theyAre)){//going diagonally down and left
+								for(int i = that[0].length - 2; i>0;i++){//Don't go too far
+									if(that[that[0].length-i][i].equals(".")){//found a dot
+										int[] possibleCoordinates = new int[2];
+										possibleCoordinates[0]=that[0].length-i;
+										possibleCoordinates[1]=i;
+										canGoHere.add(possibleCoordinates);
+									}//found a dot
+								}//Don't go too far
+							}//towards the bottom left
+
+						}//if Top right
 
 
-        }
 
-    }//I JUST SET THIS TO VOID SO IT'D COMPILE FOR TEST, it was int[][]
+        }//Iterating through all the locations of player
+				return canGoHere;
+    }//whereICanGo
 
 }//ReversiBoard
