@@ -11,7 +11,7 @@ int count = 1;
    
    for(int i = 0;i<args.length;i++){
          switch(args[i].toLowerCase()){
-            case "RandomComputerPlayer": 
+            case "randomcomputerplayer": 
                if(i == 0){
                   RandomComputerPlayer player1 = new RandomComputerPlayer("X");
                }
@@ -20,7 +20,7 @@ int count = 1;
                   RandomComputerPlayer player2 = new RandomComputerPlayer("O");
                }
             break;
-            case "Human":
+            case "human":
                if(i == 0){
                   HumanPlayer player1 = new HumanPlayer("X");
                }
