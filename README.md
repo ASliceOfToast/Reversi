@@ -15,7 +15,7 @@ There are two types of players: Human and RandomComputerPlayer.
 ###The Rules of the Gayme
 The players are pitted against each other in a death match taking place on an 8 by 8 grid, which is first populated with two X's and two O's in such a manner as the following:  
 <pre>
-   1 2 3 4 5 6 7 8  
+    1 2 3 4 5 6 7 8  
 1 . . . . . . . .
 2 . . . . . . . .
 3 . . . . _ . . .
@@ -35,7 +35,7 @@ Suppose Player 1, in a display of ruthless brutality, puts their piece at coordi
 The resulting board:  
 
 <pre>
-   1 2 3 4 5 6 7 8  
+    1 2 3 4 5 6 7 8  
 1 . . . . . . . .
 2 . . . . . . . .
 3 . . . _ X _ . .
