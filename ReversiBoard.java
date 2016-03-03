@@ -18,9 +18,9 @@ public class ReversiBoard implements Board{
     }//Board
 
     public void printBoard(){
-			System.out.println("   1 2 3 4 5 6 7 8  ");
+			System.out.println("  1 2 3 4 5 6 7 8  ");
 				for (int i = 0; i <8; i++){
-					System.out.print(" i+1");
+					System.out.print(i+1+" ");
 					for(int j = 0;j<8;++j){
   		    	  System.out.print(that[i][j]+ " ");
   			 	}//for
