@@ -283,6 +283,8 @@ public class ReversiBoard implements Board{
 					theyAre = "X";
 			}
 
+			that[x][y]=whoAmI;
+
 			//I'm not really all too sure how to go about this, I'm thinking an 8 directional flip check, let's see how that goes...
 
 			if(x>1){//Moving up
