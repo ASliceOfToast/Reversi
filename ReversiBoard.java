@@ -1,10 +1,19 @@
 import java.util.ArrayList;
 
+/**
+* This class creates and instance of board
+* along with the methods used to manipulate it.
+*/
 public class ReversiBoard implements Board{
     int[][] hereIAm;
     String[][] that=new String [8][8];
 		boolean gameover = true;
 
+		/**
+		* This constructor for ReversiBoard creates a board
+		* of size 8x8 and sets up the positions for X and O.
+		* Empty spots are represented with "."
+		*/
     public ReversiBoard(){
         for (int i = 0; i <8; i++){
   			 	for(int j = 0;j<8;++j){
@@ -17,7 +26,12 @@ public class ReversiBoard implements Board{
         that[3][4]="O";
     }//Board
 
-    public void printBoard(){
+		/**
+		* This method prints out the current board with
+		* the X and Y placements as well as the row and
+		* column numberings.
+		*/
+		public void printBoard(){
 			System.out.println("  1 2 3 4 5 6 7 8  ");
 				for (int i = 0; i <8; i++){
 					System.out.print(i+1+" ");
@@ -28,6 +42,14 @@ public class ReversiBoard implements Board{
   	  	}//For
     }//printBoard
 
+		/**
+		* This method takes in a string indicating whose
+		* turn it is (X or Y) and finds all locations of
+		* the player on the board.
+		*
+		* @param	whoAmI	a string indicating whose locations are being found
+		* @return					an array holding arrays of ints representing the location of player
+		*/
     public int[][] whereAmI(String whoAmI){
 
         int counter = 0;
@@ -58,6 +80,13 @@ public class ReversiBoard implements Board{
 
     }//whereIAm
 
+		/**
+		* Returns an array of arrays with sizes of 2 representing
+		* locations the player may place a piece.
+		*
+		* @param	whoAmI	a string representing the player
+		* @return					an ArrayList of arrays with sizes of 2 representing possible placements
+		*/
     public ArrayList<int[]> whereICanGo(String whoAmI){
         String theyAre;
 				ArrayList<int[]> canGoHere = new ArrayList<int[]>();
@@ -225,6 +254,14 @@ public class ReversiBoard implements Board{
 				return canGoHere;
     }//whereICanGo
 
+		/**
+		* Returns true if the board has no available spaces left or if
+		* if either of the two players can no longer make a move.
+		*
+		* @param	player1moves	an ArrayList of arrays representing locations of possible moves for player1
+		* @param	player2moves	an ArrayList of arrays representing locations of possible moves for player2
+		* @return								true or false depending on whether the game is over
+		*/
 		public boolean isGameOver(ArrayList<int[]> player1moves, ArrayList<int[]> player2moves){
       for (int i = 0; i <8; i++){
           for(int j = 0;j<8;++j){
@@ -241,7 +278,11 @@ public class ReversiBoard implements Board{
    return gameover;
    }//isGameOver
 
-   public void displayScore(){
+	 /**
+	 * The method does not return anything, but displaces who
+	 * won the game depending on who has the greater score.
+	 */
+	 public void displayScore(){
       int p1score=0;
       int p2score=0;
       String winner;
@@ -271,7 +312,15 @@ public class ReversiBoard implements Board{
       System.out.println(winner);
    }//displayScore
 
-
+	 /**
+	 * This method takes in an array representing the coordinates the Player
+	 * wishes to place a piece as well as a string representing the player.
+	 * Using this information, the method determines which tiles to flip and does so.
+	 * It also makes the intended placement.
+	 *
+	 * @param	placeHere	an array representing the coordinates of the intended placement
+	 * @param	whoAmI		a string representing the which player is calling the method
+	 */
 		public void flipThatShit(int[] placeHere, String whoAmI){
 
 			int x = placeHere[0];
@@ -425,6 +474,13 @@ public class ReversiBoard implements Board{
 
 		}//flip that shit
 
+		/**
+		* Takes in a string representing which player is calling the method and
+		* uses the information to determine which of all the possible moves yields
+		* the most flipped tiles.
+		*
+		* @param	whoAmI	a string representing which player is calling the method
+		*/
 		public int[] theVeryBest(String whoAmI){//find move that flips most tiles
 
 			ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
