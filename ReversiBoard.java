@@ -96,13 +96,13 @@ public class ReversiBoard implements Board{
             theyAre = "X";
         }
 
-				for(String[] fuck:that){//Happy coincidence I swear
-					for(String butt:fuck){//totally
-						if(butt.equals("_")){
-							butt=".";
-						}//should replace
-					}//all of the "_"
-				}//with "."
+				// for(String[] fuck:that){//Happy coincidence I swear
+				// 	for(String butt:fuck){//totally
+				// 		if(butt.equals("_")){
+				// 			butt=".";
+				// 		}//should replace
+				// 	}//all of the "_"
+				// }//with "."
 
         for(int[] location : hereIAm){//Iterating through all the locations of the player
 
@@ -245,11 +245,11 @@ public class ReversiBoard implements Board{
 
         }//Iterating through all the locations of player
 
-				for(int[] possibleMove:canGoHere){
-					int x = possibleMove[0];
-					int y = possibleMove[1];
-					that[x][y]="_";
-				}
+				// for(int[] possibleMove:canGoHere){
+				// 	int x = possibleMove[0];
+				// 	int y = possibleMove[1];
+				// 	that[x][y]="_";
+				// }
 
 				return canGoHere;
     }//whereICanGo
