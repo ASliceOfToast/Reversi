@@ -66,6 +66,14 @@ public class ReversiBoard implements Board{
             theyAre = "X";
         }
 
+				for(String[] fuck:that){//Happy coincidence I swear
+					for(String butt:fuck){//totally
+						if(butt.equals("_")){
+							butt=".";
+						}//should replace
+					}//all of the "_"
+				}//with "."
+
         for(int[] location : hereIAm){//Iterating through all the locations of the player
 
             int x = location[0];
@@ -153,7 +161,7 @@ public class ReversiBoard implements Board{
 										step++;
 									}//while loop
 								}//check for them
-							}//moving right and down
+							}//moving down and left
 
 							if(x>1&&y>1){//moving up and left
 								if(that[x-1][y-1].equals(theyAre)){//check for them
@@ -206,7 +214,16 @@ public class ReversiBoard implements Board{
 						}//General condition
 
         }//Iterating through all the locations of player
+
+				for(int[] possibleMove:canGoHere){
+					int x = possibleMove[0];
+					int y = possibleMove[1];
+					that[x][y]="_";
+				}
+
 				return canGoHere;
     }//whereICanGo
+
+
 
 }//ReversiBoard
