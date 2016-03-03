@@ -283,7 +283,7 @@ public class ReversiBoard implements Board{
 					theyAre = "X";
 			}
 
-			that[x][y]=whoAmI;
+			that[x][y]=whoAmI;//Places the move.
 
 			//I'm not really all too sure how to go about this, I'm thinking an 8 directional flip check, let's see how that goes...
 
@@ -424,5 +424,192 @@ public class ReversiBoard implements Board{
 			}//moving right and down
 
 		}//flip that shit
+
+		public int[] theVeryBest(String whoAmI){//find move that flips most tiles
+
+			ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+			possibleMoves = whereICanGo(whoAmI);
+			int[] bestMove = new int[2];
+			int numFlipped = 0;
+			String theyAre;
+			if(whoAmI.equals("X")){
+					theyAre = "O";
+			}else{
+					theyAre = "X";
+			}
+
+			for(int[] move:possibleMoves){
+					int x = move[0];
+					int y = move[1];
+
+					//I think I'll re implement something like the 8 directional check for the flip function.
+					if(x>1){//Moving up
+						if(that[x-1][y].equals(theyAre)){//check for them
+							int step = 2;
+							int counter = 1;
+							while(x-step>=0){
+								if(that[x-step][y].equals(whoAmI)){//found myself
+									for(int i=counter;i>0;i--){//replace tiles
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found a dot
+								step++;
+								counter++;
+							}//while loop
+						}//check for myself
+					}//moving up
+
+					if(x<6){//Moving down
+						if(that[x+1][y].equals(theyAre)){//check for them
+							int step = 2;
+							int counter = 1;
+							while(x+step<=7){
+								if(that[x+step][y].equals(whoAmI)){//found myself
+									for(int i = counter; i>0;i--){//replace tiles
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found myself
+								step++;
+								counter++;
+							}//while loop
+						}//check for them
+					}//moving down
+
+					if(y>1){//moving left
+						if(that[x][y-1].equals(theyAre)){//right check
+							int step = 2;
+							int counter = 1;
+							while(y-step>=0){
+								if(that[x][y-step].equals(whoAmI)){//found myself
+									for(int i=counter;i>0;i--){//replace tiles
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found myself
+								step++;
+								counter++;
+							}//while loop
+						}//right check
+					}//moving left
+
+					if(y<6){//moving right
+						if(that[x][y+1].equals(theyAre)){//right check
+							int step = 2;
+							int counter = 1;
+							while(y+step<=7){
+								if(that[x][y+step].equals(whoAmI)){//found myself
+									for(int i = counter; i>0;i++){//Replacetiles
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found myself
+								step++;
+								counter++;
+							}//while loop
+						}//right check
+					}//moving right
+
+					if(x<6&&y>1){//moving down and left
+						if(that[x+1][y-1].equals(theyAre)){//check for them
+							int step = 2;
+							int counter = 1;
+							while(x+step<=7&&y-step>=0){
+								if(that[x+step][y-step].equals(whoAmI)){//found myself
+									for(int i = counter; i>0; i--){
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found a dot
+								step++;
+								counter++;
+							}//while loop
+						}//check for them
+					}//moving down and left
+
+					if(x>1&&y>1){//moving up and left
+						if(that[x-1][y-1].equals(theyAre)){//check for them
+							int step = 2;
+							int counter = 1;
+							while(x-step>=0&&y-step>=0){
+								if(that[x-step][y-step].equals(whoAmI)){//found myself
+									for(int i =counter;i>0;i--){
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found myself
+								step++;
+								counter++;
+							}//while loop
+						}//check for them
+					}//moving right and up
+
+					if(x>1&&y<6){//moving up and right
+						if(that[x-1][y+1].equals(theyAre)){//check for them
+							int step = 2;
+							int counter = 1;
+							while(x-step>=0&&y+step<=7){
+								if(that[x-step][y+step].equals(whoAmI)){//myself
+									for(int i = counter; i>0;i--){
+										if(counter>numFlipped){//Comparing to currently best move
+											counter=numFlipped;
+											bestMove[0]=x;
+											bestMove[1]=y;
+										}
+									}
+									break;
+								}//found myself
+								step++;
+								counter++;
+							}//while loop
+						}//check
+					}//moving right and up
+
+					if(x<6&&y<6){//moving down and right
+						if(that[x+1][y+1].equals(theyAre)){//check for them
+							int step = 2;
+							int counter=1;
+							while(x+step<=7&&y+step<=7){
+								if(that[x+step][y+step].equals(whoAmI)){//found myself
+									for(int i=counter;i>0;i--){
+										that[x+i][y+i]=whoAmI;
+									}
+									break;
+								}//myself
+								step++;
+								counter++;
+							}//while loop
+						}//check for them
+					}//moving right and down
+
+			}
+
+			return bestMove;
+		}//like no one ever was
 
 }//ReversiBoard
