@@ -47,8 +47,17 @@ public class Reversi{
      
      
    ReversiBoard itsaboard = new ReversiBoard();
+   itsaboard.printBoard();
+   itsaboard.whereAmI(player1.getPlayer());
    
-   //below commented out until boolean wincondition actually exists
+   int[] AHAHA = new int[2];
+   for (int i=0;i <itsaboard.whereICanGo(player1.getPlayer()).size();i++){
+      AHAHA = itsaboard.whereICanGo(player1.getPlayer()).get(i);
+      System.out.println(AHAHA[0] + 1 + ", " + (AHAHA[1] + 1));
+   
+   }
+   
+   /*//below commented out until boolean wincondition actually exists
    while(!itsaboard.isGameOver(itsaboard.whereICanGo(player1.getPlayer()), itsaboard.whereICanGo(player2.getPlayer()))){
  
          itsaboard.printBoard(); 
@@ -56,6 +65,7 @@ public class Reversi{
             itsaboard.whereAmI(player2.getPlayer());
             if(itsaboard.whereICanGo(player2.getPlayer()).size() != 0){
                player2.setMove(itsaboard.whereICanGo(player2.getPlayer()));
+               
             }//if, skips player turn if they don't have any possible moves
             else{
                if(player2 instanceof HumanPlayer){
@@ -75,7 +85,7 @@ public class Reversi{
             }//else
          }//tests to see which player's turn it is. X goes on odd numbered turns, O on even
          count++;
-   }//while, runs while game end conditions not met
+   }//while, runs while game end conditions not met*/
    
    
    
