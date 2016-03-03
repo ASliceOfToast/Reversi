@@ -10,7 +10,7 @@ public String getPlayer(){
    return player;
 }
 public void setPlayer(String player){
-   player = this.player;
+   this.player = player;
 }
 
 public abstract void setMove(ArrayList<int[]> possiblemoves);
@@ -20,7 +20,7 @@ public int[] getMove(){
 }
 
 public void setScore(int score){
-   score = this.score;
+   this.score = score;
 }
 
 public int getScore(){
