@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class ReversiBoard implements Board{
     int[][] hereIAm;
     String[][] that=new String [8][8];
+		boolean gameover = true;
 
     public ReversiBoard(){
         for (int i = 0; i <8; i++){
@@ -224,6 +225,57 @@ public class ReversiBoard implements Board{
 				return canGoHere;
     }//whereICanGo
 
+		public boolean isGameOver(ArrayList<int[]> player1moves, ArrayList<int[]> player2moves){
+      for (int i = 0; i <8; i++){
+          for(int j = 0;j<8;++j){
+              if(that[i][j].equals(".")){
+               gameover = false;
+              }//if, checks if board still has available spaces
+          }//for
+      }//For
 
+      if(player1moves.size() != 0 && player2moves.size() != 0){
+         gameover = false;
+      }//if, checks if at least one player has possible moves
+
+   return gameover;
+   }//isGameOver
+
+   public void displayScore(){
+      int p1score=0;
+      int p2score=0;
+      String winner;
+
+      for(int i = 0; i<8; i++){
+         for(int j = 0; j<8; j++){
+            if(that[i][j].equals("X")){
+               p1score++;
+            }//if
+            else if(that[i][j].equals("O")){
+               p2score++;
+            }//else if
+         }//for
+      }//For
+
+      System.out.println("\nPlayer 1: " + p1score + "points    Player 2: " + p2score + " points");
+      if(p1score > p2score){
+         winner = "Player 1 wins!! GG EZ";
+      }//if player 1 higher score
+      else if(p1score < p2score){
+         winner = "Player 2 wins!! GG EZ";
+      }//if player 2 higher score
+      else{
+         winner = "Neither of you fools win! AHAHAHA";
+      }//if they tie
+
+      System.out.println(winner);
+   }//displayScore
+
+
+		public void flipThatShit(){
+
+
+
+		}//flip that shit
 
 }//ReversiBoard
