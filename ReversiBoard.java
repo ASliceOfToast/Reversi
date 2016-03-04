@@ -375,24 +375,7 @@ public class ReversiBoard implements Board{
 				}//right check
 			}//moving left
 
-			// if(y<6){//moving right
-			// 	if(that[x][y+1].equals(theyAre)){//right check
-			// 		int step = 2;
-			// 		int counter = 1;
-			// 		while(y+step<=7){
-			// 			if(that[x][y+step].equals(whoAmI)){//found myself
-			// 				for(int i = counter; i>0;i++){//Replacetiles
-			// 					that[x][y+i]=whoAmI;
-			// 				}
-			// 				break;
-			// 			}//found myself
-			// 			step++;
-			// 			counter++;
-			// 		}//while loop
-			// 	}//right check
-			// }//moving right
-
-			if(y<6){ //right
+			if(y<6){ //moving right
 				if(that[x][y+1].equals(theyAre)){//check for them
 					int step = 2;
 					int counter = 1;
