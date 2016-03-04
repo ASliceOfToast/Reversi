@@ -96,13 +96,7 @@ public class ReversiBoard implements Board{
             theyAre = "X";
         }
 
-				for(String[] fuck:that){//Happy coincidence I swear
-					for(String butt:fuck){//totally
-						if(butt.equals("_")){
-							butt=".";
-						}//should replace
-					}//all of the "_"
-				}//with "."
+
 
         for(int[] location : hereIAm){//Iterating through all the locations of the player
 
@@ -112,6 +106,14 @@ public class ReversiBoard implements Board{
 						//Time to do the really fucking long check
 
 						if(true){//General condition (There was a reason for this if statement earlier, but I changed it so now it's obsolete. I can't be bothered to remove it.)
+
+						for(String[] fuck:that){//Happy coincidence I swear
+							for(String butt:fuck){//totally
+								if(butt.equals("_")){
+									butt=".";
+								}//should replace
+							}//all of the "_"
+						}//with "."
 
 							if(x>1){//Moving up
 								if(that[x-1][y].equals(theyAre)){//check for them
