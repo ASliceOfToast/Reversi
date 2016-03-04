@@ -14,19 +14,19 @@ public class Reversi{
    public void setMove(ArrayList<int[]> screamssomemore){}
    public void setMove(int[] position){};
   };
-  
+
    if(args.length >= 3){
       System.out.println("Format is: java Reversi Player 1 Player 2. Replace Player 1 and Player 2 with Human or RandomComputerPlayer.");
       System.exit(0);
    }//if too many arguments
-   
+
    for(int i = 0;i<args.length;i++){
          switch(args[i].toLowerCase()){
-            case "randomcomputerplayer": 
+            case "randomcomputerplayer":
                if(i == 0){
                   player1 = new RandomComputerPlayer("X");
                }
-     
+
                if(i == 1){
                   player2 = new RandomComputerPlayer("O");
                }
@@ -36,7 +36,7 @@ public class Reversi{
                   player1 = new HumanPlayer("X");
                }
                if(i == 1){
-                  player2 = new HumanPlayer("O");   
+                  player2 = new HumanPlayer("O");
                }
             break;
             case "intelligentcomputerplayer":
@@ -47,25 +47,50 @@ public class Reversi{
                   player2 = new IntelligentComputerPlayer("O");
                }
             break;
-            default: 
+						case "reallyintelligentcomputerplayer":
+							if(i==0){
+								System.out.println("  1 2 3 4 5 6 7 8  ");
+									for (int q = 0; q <8; q++){
+										System.out.print(q+1+" ");
+										for(int j = 0;j<8;++j){
+					  		    	  System.out.print("X ");
+					  			 	}//for
+					  			 	System.out.println();
+					  	  	}//For
+									System.out.println("Player 1: 64 points		Player 2: 0 points\nPlayer 1 Wins!!\nHoly shit you suck, get rekt m8");
+							}
+							if(i==1){
+								System.out.println("  1 2 3 4 5 6 7 8  ");
+									for (int q = 0; q <8; q++){
+										System.out.print(q+1+" ");
+										for(int j = 0;j<8;++j){
+					  		    	  System.out.print("O ");
+					  			 	}//for
+					  			 	System.out.println();
+					  	  	}//For
+									System.out.println("Player 1: 0 points		Player 2: 64 points\nPlayer 1 Wins!!\nHoly shit you suck, get rekt m8");
+							}
+						System.exit(0);
+						break;
+            default:
                System.out.println("Format is: java Reversi Player 1 Player 2. Replace Player 1 and Player 2 with Human or RandomComputerPlayer.");
-               System.exit(0);    
+               System.exit(0);
             }//switch, assigns players, exits game if invalid args given
-            
+
    }//for loop
-   
+
    System.out.println("\nWelcome to Reversi!  Moves should be entered in \"[row] [column]\" format.\n");
-     
+
 
    ReversiBoard itsaboard = new ReversiBoard();
    itsaboard.whereAmI(player1.getPlayer());
    itsaboard.whereAmI(player2.getPlayer());
-   
-   
-   
+
+
+
    while(!gameover){
- 
-         
+
+
          if(count%2 == 0){
             itsaboard.whereAmI(player2.getPlayer());
                if(player2 instanceof HumanPlayer){
@@ -82,14 +107,14 @@ public class Reversi{
                   else{
                      player2.setMove(itsaboard.whereICanGo(player2.getPlayer()));
                   }
-                  
+
                   itsaboard.flipThatShit(player2.getMove(),player2.getPlayer());
                }//if, skips player turn if they don't have any possible moves
                else{
                   if(player2 instanceof HumanPlayer){
                      System.out.println("No possible moves!");
                   }//if human player, displays message for them if they had no possible moves
-            
+
             }//else, if there were no possible moves
             if(player2 instanceof ComputerPlayer){
                try {
@@ -101,8 +126,8 @@ public class Reversi{
                itsaboard.printBoard();
                System.out.println();
                System.out.println("Player 2 moved!");
-            } 
-            
+            }
+
          }//if, tests what player's turn it is
          else{
             itsaboard.whereAmI(player1.getPlayer());
@@ -116,7 +141,7 @@ public class Reversi{
                if(itsaboard.whereICanGo(player1.getPlayer()).size() != 0){
                   if(player1 instanceof IntelligentComputerPlayer){
                      player1.setMove(itsaboard.theVeryBest(player1.getPlayer()));
-                  }               
+                  }
                   else{
                      player1.setMove(itsaboard.whereICanGo(player1.getPlayer()));
                   }
@@ -141,11 +166,11 @@ public class Reversi{
          }//tests to see which player's turn it is. X goes on odd numbered turns, O on even
          count++;
       gameover = itsaboard.isGameOver(itsaboard.whereICanGo(player1.getPlayer()), itsaboard.whereICanGo(player2.getPlayer()));
-      
+
    }//while, runs while game end conditions not met
-   
-   
-   
+
+
+
    itsaboard.displayScore();
   }
 }

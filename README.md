@@ -9,10 +9,11 @@
 
 <b>eg.</b> `java Reversi Human RandomComputerPlayer` or `java Reversi Human IntelligentComputerPlayer`
 
-There are three types of players: Human, RandomComputerPlayer, and IntelligentComputerPlayer.      
+There are four types of players: Human, RandomComputerPlayer, IntelligentComputerPlayer, and ReallIntelligentComputerPlayer.      
 <b>Human:</b> Allows for user input to determine moves.  
 <b>RandomComputerPlayer:</b> A simpleminded bot that makes random moves against its opponent in futile hopes of success.
-<b>IntelligentComputerPlayer:</b> An AI modeled after Ebenezer Scrooge greedily flipping tiles whilst annihilating his foes.    
+<b>IntelligentComputerPlayer:</b> An AI modeled after Ebenezer Scrooge greedily flipping tiles whilst annihilating his foes.
+<b>ReallyIntelligentComputerPlayer:</b> An undefeatable AI that will destroy every shred of hope you had. Just give up. It's over.    
 
 <b>Player 1 goes first and their pieces are denoted by X, while Player 2's are denoted by O.</b>
 
