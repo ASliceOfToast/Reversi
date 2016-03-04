@@ -286,7 +286,7 @@ public class ReversiBoard implements Board{
          }//for
       }//For
 
-      System.out.println("\nPlayer 1: " + p1score + "points    Player 2: " + p2score + " points");
+      System.out.println("\nPlayer 1: " + p1score + " points    Player 2: " + p2score + " points");
       if(p1score > p2score){
          winner = "Player 1 wins!! GG EZ";
       }//if player 1 higher score
