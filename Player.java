@@ -5,7 +5,6 @@ import java.util.ArrayList;
 */
 public abstract class Player{
 
-	private int score;
 	private String player;
 	public int[] position = new int[2];
 
