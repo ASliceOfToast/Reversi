@@ -238,7 +238,7 @@ public class ReversiBoard implements Board{
 						}//General condition
 
         }//Iterating through all the locations of player
-			
+
 				return canGoHere;
     }//whereICanGo
 
@@ -655,5 +655,29 @@ public class ReversiBoard implements Board{
 
 			return bestMove;
 		}//like no one ever was
+
+		public void printBored(ArrayList<int[]> placesICanGo){
+			String[][] copy = new String[8][8];
+			for(int i = 0;i<8;i++){
+				for(int j= 0; j<8;j++){
+					copy[i][j]=that[i][j];
+				}
+			}
+
+			for(int i = 0;i<placesICanGo.size();i++){
+				int x = placesICanGo.get(i)[0];
+				int y = placesICanGo.get(i)[1];
+				copy[x][y]="_";
+			}
+
+			System.out.println("  1 2 3 4 5 6 7 8  ");
+				for (int i = 0; i <8; i++){
+					System.out.print(i+1+" ");
+					for(int j = 0;j<8;++j){
+  		    	  System.out.print(copy[i][j]+ " ");
+  			 	}//for
+  			 	System.out.println();
+  	  	}//For
+    }//printBoard
 
 }//ReversiBoard
