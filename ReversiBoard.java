@@ -656,6 +656,12 @@ public class ReversiBoard implements Board{
 			return bestMove;
 		}//like no one ever was
 
+		/**
+		* This method prints out a copy of the current game board while also
+		* indicating possible placements for the given player.
+		*
+		* @param	placesICanGo	an arraylist of int[] holding coordinates for possible placements.
+		*/
 		public void printBored(ArrayList<int[]> placesICanGo){
 			String[][] copy = new String[8][8];
 			for(int i = 0;i<8;i++){
