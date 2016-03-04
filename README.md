@@ -7,9 +7,7 @@
 <b>2.</b> In case there are no class files, run the following to compile the java files: `javac Player.java HumanPlayer.java ComputerPlayer.java RandomComputerPlayer.java Board.java ReversiBoard.java Reversi.java` .
 <b>2.</b> Start a game by typing the command `java Reversi [Player 1] [Player 2]`, replacing [Player 1] and [Player 2] with the types of players you would like.  
 
-<b>eg.</b> `java Reversi Human RandomComputerPlayer`
-or
-`java Reversi Human IntelligentComputerPlayer` (if you're feeling particularly cocky)  
+<b>eg.</b> `java Reversi Human RandomComputerPlayer` or `java Reversi Human IntelligentComputerPlayer`
 
 There are three types of players: Human, RandomComputerPlayer, and IntelligentComputerPlayer.      
 <b>Human:</b> Allows for user input to determine moves.  
