@@ -259,8 +259,8 @@ public class ReversiBoard implements Board{
           }//for
       }//For
 
-      if(player1moves.size() != 0 && player2moves.size() != 0){
-         gameover = false;
+      if(player1moves.size() == 0 && player2moves.size() == 0){
+         gameover = true;
       }//if, checks if at least one player has possible moves
 
    return gameover;
