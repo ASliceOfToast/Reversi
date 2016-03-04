@@ -556,7 +556,7 @@ public class ReversiBoard implements Board{
 							int counter = 1;
 							while(y+step<=7){
 								if(that[x][y+step].equals(whoAmI)){//found myself
-									for(int i = counter; i>0;i++){//Replacetiles
+									for(int i = counter; i>0;i--){//Replacetiles
 										if(counter>numFlipped){//Comparing to currently best move
 											counter=numFlipped;
 											bestMove[0]=x;
