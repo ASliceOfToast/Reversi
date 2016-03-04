@@ -10,12 +10,16 @@ public HumanPlayer(String player){
    setPlayer(player);
 }
 
+
+
 public void setMove(ArrayList<int[]> possiblecoordinates){//will get possiblecoordinates from the whereCanIGo method in ReversiBoard
    this.possiblecoordinates = possiblecoordinates;
    System.out.println("Enter your move, " + getPlayer() + " player: ");
    String fightme;
-   fightme = input.nextLine().replaceAll(" ",""); //kill all white space
-     //not accounting for syntax errors in player input yet =__=
+   int[] AHAHA = new int[2];
+   
+   fightme = input.nextLine().replaceAll(" ",""); 
+     
    try{
       position[0] = Character.getNumericValue(fightme.charAt(0)) - 1;
       position [1] = Character.getNumericValue(fightme.charAt(1)) - 1;   
