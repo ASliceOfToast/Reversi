@@ -107,14 +107,6 @@ public class ReversiBoard implements Board{
 
 						if(true){//General condition (There was a reason for this if statement earlier, but I changed it so now it's obsolete. I can't be bothered to remove it.)
 
-						for(String[] fuck:that){//Happy coincidence I swear
-							for(String butt:fuck){//totally
-								if(butt.equals("_")){
-									butt=".";
-								}//should replace
-							}//all of the "_"
-						}//with "."
-
 							if(x>1){//Moving up
 								if(that[x-1][y].equals(theyAre)){//check for them
 									int step = 2;
@@ -246,13 +238,7 @@ public class ReversiBoard implements Board{
 						}//General condition
 
         }//Iterating through all the locations of player
-
-				for(int i = 0;i<canGoHere.size();i++){
-					int x = canGoHere.get(i)[0];
-					int y = canGoHere.get(i)[1];
-					that[x][y]="_";
-				}
-
+			
 				return canGoHere;
     }//whereICanGo
 
