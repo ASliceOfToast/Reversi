@@ -245,10 +245,10 @@ public class ReversiBoard implements Board{
 
         }//Iterating through all the locations of player
 
-				for(int[] possibleMove:canGoHere){
-					int x = possibleMove[0];
-					int y = possibleMove[1];
-					that[x][y]="_";
+				for(int i = 0;i<canGoHere.length;i++){
+					int x = canGoHere[i][0];
+					int y = canGoHere[i][1];
+					that[i][j]="_";
 				}
 
 				return canGoHere;
